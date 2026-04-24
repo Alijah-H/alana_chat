@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALANA Chat - Home</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<div class="background"></div> <!-- Background Layer -->
+
+<div class="content">
+    <!-- Header -->
+    <div id="header"></div>
+    <script>
+        fetch('header.php')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+    </script>
+
+    <!-- Main Section -->
+    <main>
+        <section class="intro">
+            <h1>ALANA Chat</h1>
+            <p>A space for African, Latino, Asian, and Native American students</p>
+            <button onclick="window.location.href='blog.php'">Find Your Space</button>
+        </section>
+
+        <section class="section-white">
+            <p>Students of color at RIT have an abundance of resources that exist to make sure they can succeed! Here, you can find the resources you need to <strong>find your community.</strong> Everything from financial support, professional support, and even student-led organizations are here for you to use.</p>
+            <button onclick="window.location.href='resources.php'">Explore Resources</button>
+        </section>
+
+        <section class="section-block">
+            <div class="text-box">
+                <h2>Student Orgs</h2>
+                <p>Student-led organizations exist to create a community for students to be themselves, find your community today!</p>
+            </div>
+            <div class="text-box">
+                <h2>Community</h2>
+                <p>ALANA Chat allows students to share tips that help students of color succeed, from networking tools to job openings.</p>
+            </div>
+            <div class="text-box">
+                <h2>Academic Aid</h2>
+                <p>From the McNair Scholars Program to DDI Tutoring, RIT provides an abundance of academic support for its students.</p>
+            </div>
+        </section>
+
+        <section class="info-section">
+            <div class="info-box">
+                <h2>Power of ALANA</h2>
+                <p>There is power in being an ALANA student. Campus communities are available in a range of forms, from broad cultural groups to niche professional interests. Being ALANA at RIT means being proud of who you are and what you represent!</p>
+            </div>
+            <div class="info-box">
+                <h2>What is ALANA Chat?</h2>
+                <p>ALANA Chat is a space for discovery and communication. There are many opportunities for students of color to receive professional, academic, and financial support at RIT, but there is not any central place to find all these resources. ALANA Chat gathers all these resources in one place and provides a searchable filter system so you can narrow your search to your specific needs. This hub allows students of color to communicate with one another, building community enriched and informed resources for them to succeed.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</div>
+</body>
+</html>

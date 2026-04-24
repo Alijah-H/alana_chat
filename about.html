@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ALANA Chat: About</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <div id="header"></div>
+    <script>
+        fetch('header.php')
+            .then(response => response.text())
+            .then(data => document.getElementById('header').innerHTML = data);
+    </script>
+</head>
+
+<body>
+    <div class="about-top">
+
+        <h1>About</h1>
+        
+        <pre><p>
+
+            RIT contains numerous groups that ensure ALANA (African, Latin, 
+            Asian, Native American) students have access to opportunities and 
+            are in a position to flourish. However, students report that the 
+            abundance of distinct resources and groups are overwhelming and 
+            hard to track down, leaving them unsure of which opportunities to
+             seize and which communities to engage with. ALANA Chat is a student 
+            created and operated tool for sharing information and navigating 
+            resources. </br>
+            Created in 2022 as a capstone project, ALANA Chat has 
+            been passed down through several groups of Humanities, Computing, 
+            and Design students passionate about helping ALANA students thrive 
+            and flourish on RIT’s diverse campus.
+
+        </p></pre>
+
+        <h2>
+            Meet the Team!
+        </h2>
+    </div>
+
+    <div class="about">
+        <h2 id="headnames">Creators</h2>
+        <div id="container">
+            <div>
+                <img src="assets/img/zoe.png" alt="Zoe Zapata">
+                <h2>Zoe Zapata</h2>
+                <pre>ALANA Chat Founder</pre>
+            </div>
+            <div>
+                <img src="assets/img/carter.png" alt="Carter Sargent">
+                <h2>Carter Sargent</h2>
+                <pre>ALANA Chat Back-end Developer</pre>
+            </div>
+        </div>
+
+        <h2 id="headnames">Advisors</h2>
+        <div id="container">
+            <div>
+                <img src="assets/img/minerva.png" alt="Mike Minerva">
+                <h2>Mike Minerva</h2>
+                <pre>New Media Design Professor
+    UI/UX</pre>
+            </div>
+
+            <div>
+                <img src="assets/img/thiuri.png" alt="Philippa Thiuri">
+                <h2>Philippa Thiuri</h2>
+                <pre>Division of Diversity and Inclusion
+    Content Creation/Community Outreach</pre>
+            </div>
+
+            <div>
+                <img src="assets/img/snyder.png" alt="Nick Snyder">
+                <h2>Nick Snyder</h2>
+                <pre>School of Information Professor</pre>
+            </div>
+            
+        </div>
+
+        <div id="container">
+            <div>
+                <img src="assets/img/frank.png" alt="Michael Frank">
+                <h2>Michael Frank</h2>
+                <pre>Capstone Professor</pre>
+            </div>
+
+            <div>
+                <img src="assets/img/jess.png" alt="Jessica Lieberman">
+                <h2>Jessica Lieberman</h2>
+                <pre>Capstone Professor</pre>
+            </div>
+
+            <div>
+                <img src="assets/img/zoe.png" alt="Zoe Zapata">
+                <h2>Zoe Zapata</h2>
+                <pre>ALANA Chat Founder</pre>
+            </div>
+        </div>
+
+        <h2 id="headnames">Current Capstone</h2>
+        <div id="container">
+            <div>
+                <img src="assets/img/grace.png" alt="Grace Ledford">
+                <h2>Grace Ledford</h2>
+                <pre>Capstone 25'
+    Marketing</pre>
+            </div>
+
+            <div>
+                <img src="assets/img/rin.png" alt="Trinity Wray">
+                <h2>Trinity Wray</h2>
+                <pre>Capstone 25'
+    Project Manager</pre>
+            </div>
+
+            <div>
+                <img src="assets/img/ali.png" alt="Alison Lodge">
+                <h2>Alison Lodge</h2>
+                <pre>Capstone 25'
+    Researcher</pre>
+            </div>
+        </div>
+
+        <div id="container">
+            <div>
+                <img src="assets/img/filler.png" alt="filler">
+                <h2>Enzo Espiritu</h2>
+                <pre>Capstone 25'
+    Back-end/Front-end Developer</pre>
+            </div>
+            
+            <div>
+                <img src="assets/img/sushant.png" alt="filler">
+                <h2>Sushant Pulipati</h2>
+                <pre>Capstone 25'
+    Back-end/Front-end Developer</pre>
+            </div>
+        </div>
+
+        <h2 id="headnames">Past Capstone</h2>
+        <div id="container">
+            <div>
+                <img src="assets/img/chiny.png" alt="Chiny Okonkwo">
+                <h2>Chiny Okonkwo</h2>
+                <pre>Capstone 24'
+    UI/UX</pre>
+            </div>
+            <div>
+                <img src="assets/img/larry.png" alt="Larry Meng">
+                <h2>Larry Meng</h2>
+                <pre>Capstone 24'
+    Back-end Developer</pre>
+            </div>
+            <div> 
+                <img src="assets/img/anna.png" alt="Anna Liang">
+                <h2>Anna Liang</h2>
+                <pre> Capstone 24'
+    Marketing</pre>
+            </div>
+        </div>
+    </div>
+</body>
+    <!-- Footer -->
+    <div id="footer"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</html>

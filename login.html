@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALANA Chat - Home</title>
+    <link rel="stylesheet" href="assets/css/loginstyles.css">
+    <script>
+        function showForm(formType) {
+            if (formType === 'signup') {
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('signup-section').style.display = 'block';
+            } else {
+                document.getElementById('login-section').style.display = 'block';
+                document.getElementById('signup-section').style.display = 'none';
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            showForm('login'); // Default to login form
+        });
+    </script>
+
+</head>
+<body>
+<div class="background"></div> <!-- Background Layer -->
+
+<div class="content">
+    <!-- Header -->
+<!--    <div id="header"></div>-->
+<!--    <script>-->
+<!--        fetch('header.html')-->
+<!--            .then(response => response.text())-->
+<!--            .then(data => document.getElementById('header').innerHTML = data);-->
+<!--    </script>-->
+    <?php include 'header.php'; ?>
+
+    <main>
+        <section id="login-section" class="login-section">
+            <h1>Login to ALANA Chat</h1>
+            <form id="login-form" action="login.php" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit">Login</button>
+            </form>
+            <p>Don't have an account? <a href="#" onclick="showForm('signup')">Sign up here</a></p>
+        </section>
+
+        <section id="signup-section" class="signup-section" style="display: none;">
+            <h1>Sign Up for ALANA Chat</h1>
+            <form id="signup-form" action="signup.php" method="POST">
+                <label for="new-name">Full name:</label>
+                <input type="text" id="new-name" name="new-name" required>
+
+                <label for="new-username">Username:</label>
+                <input type="text" id="new-username" name="new-username" required>
+
+                <label for="new-password">Password:</label>
+                <input type="password" id="new-password" name="new-password" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+
+            <p>Already have an account? <a href="#" onclick="showForm('login')">Login here</a></p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+    <script>
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => document.getElementById('footer').innerHTML = data);
+    </script>
+</div>
+</body>
+</html>
