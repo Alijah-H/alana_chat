@@ -1,37 +1,46 @@
+/* assets/css/loginstyles.css
+   Exact header/footer rules from your global stylesheet (kept verbatim for those selectors),
+   plus focused, improved login/signup styles that:
+     - prevent the form from sitting behind the fixed header
+     - center the login card vertically and horizontally
+     - visually spruce up the form (clean, modern, on-brand)
+   Drop this file in place of the current loginstyles.css.
+*/
+
 /* Import Nunito Font */
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap');
 
-/* Reset Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* ---------------------------
+   Reset + base
+   --------------------------- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
 body {
-    font-family: 'Nunito', sans-serif;
-    background-color: #fdf7ec;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+  font-family: 'Nunito', sans-serif;
+  background-color: #fdf7ec; /* keep on-brand background color only */
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
-/* Background Layer */
+/* Background element kept but no forced image */
 .background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    /*background-image: url('../img/background.jpg');*/
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+  opacity: 0.98;
 }
 
-/* Header & Footer Styles */
+/* ---------------------------
+   Header & Footer (exact from global stylesheet)
+   --------------------------- */
 header, footer {
     display: flex;
     justify-content: space-between;
@@ -56,11 +65,15 @@ footer {
 /* Logo Styling */
 .logo {
     max-width: 150px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .logo img {
     width: 100px;
     height: auto;
+    display: block;
 }
 
 /* Navigation Styles */
@@ -70,6 +83,7 @@ nav ul, .footer-nav ul {
     gap: 20px;
     margin: 0;
     padding: 0;
+    align-items: center;
 }
 
 nav ul li, .footer-nav ul li {
@@ -83,6 +97,7 @@ nav ul li a, .footer-nav ul li a {
     font-weight: 600;
     padding: 5px 10px;
     transition: color 0.3s;
+    border-radius: 6px;
 }
 
 nav ul li a.active, nav ul li a:hover, .footer-nav ul li a:hover {
@@ -90,79 +105,244 @@ nav ul li a.active, nav ul li a:hover, .footer-nav ul li a:hover {
     border-bottom: 2px solid #e63946;
 }
 
+/* Header/footer inner container utility (if header.php/footer.html use .inner) */
+header .inner, footer .inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
 
-/* Centering login form */
+/* ---------------------------
+   Layout helpers (prevent overlap + center)
+   --------------------------- */
+
+/* Match your header/footer heights used elsewhere; adjust if your header/footer differ */
+:root {
+  --header-height: 72px;
+  --footer-height: 56px;
+  --accent: #ee2a45;
+  --accent-2: #e63946;
+  --card-bg: #ffffff;
+  --card-radius: 14px;
+  --card-shadow: 0 12px 30px rgba(0,0,0,0.06);
+}
+
+/* Ensure content sits below the fixed header and above the fixed footer */
+.content {
+  width: 100%;
+  padding-top: calc(var(--header-height) + 20px);
+  padding-bottom: calc(var(--footer-height) + 20px);
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+}
+
+/* Main container: center the card both vertically and horizontally */
 main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    flex-direction: column;
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  gap: 28px;
 }
 
-.login-section, .signup-section {
-    background: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
+/* ---------------------------
+   Spruced-up login / signup card
+   --------------------------- */
+
+/* Card base */
+.login-section,
+.signup-section {
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.995));
+  border-radius: var(--card-radius);
+  padding: 32px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid rgba(0,0,0,0.04);
+  transition: transform .14s ease, box-shadow .14s ease;
+  position: relative;
+  z-index: 10; /* ensure above header placeholders */
 }
 
-.login-section, .signup-section {
-    background: white;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
-    transition: all 0.3s ease-in-out;
+/* Accent stripe for visual identity */
+.login-section::before,
+.signup-section::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  height: 36px;
+  width: 6px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
 }
-h1 {
-    font-size: 26px;
-    color: #333;
-    margin-bottom: 20px;
+
+/* Card header area */
+.login-section h1,
+.signup-section h1 {
+  font-size: 24px;
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+  text-align: left;
+  padding-left: 36px; /* leave room for accent stripe */
 }
+
+/* Subheading */
+.login-section .subtitle,
+.signup-section .subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 18px;
+  padding-left: 36px;
+}
+
+/* Form layout: modern, roomy */
 form {
-    display: flex;
-    flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 6px;
+  padding-left: 36px;
+  padding-right: 6px;
 }
+
+/* Labels */
 label {
-    font-size: 16px;
-    margin-bottom: 8px;
-    text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  color: #333;
+  display: block;
+  margin-bottom: 6px;
 }
-input {
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 16px;
-    width: 100%;
+
+/* Inputs: larger, rounded, subtle inner shadow */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.08);
+  font-size: 15px;
+  background: #fff;
+  transition: box-shadow .12s ease, border-color .12s ease, transform .06s ease;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
 }
-button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 12px;
-    border-radius: 6px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background 0.3s ease;
+
+/* Focus state */
+input:focus {
+  outline: none;
+  border-color: rgba(230,40,69,0.18);
+  box-shadow: 0 8px 20px rgba(230,40,69,0.06);
+  transform: translateY(-1px);
 }
-button:hover {
-    background-color: #0056b3;
+
+/* Grouped controls row (optional) */
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
 }
-p {
-    margin-top: 15px;
+
+/* Primary button: full-width, pill-like */
+button[type="submit"] {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  color: #fff;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 800;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(230,40,69,0.12);
+  transition: transform .08s ease, filter .12s ease;
 }
-a {
-    color: #007BFF;
-    text-decoration: none;
-    font-weight: bold;
+
+/* Button hover/active */
+button[type="submit"]:hover { transform: translateY(-2px); filter: brightness(.98); }
+button[type="submit"]:active { transform: translateY(0); }
+
+/* Small helper text and links */
+.helper-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding-left: 36px;
 }
-a:hover {
-    text-decoration: underline;
+.helper-row a {
+  color: var(--accent-2);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Inline form note (error/success) */
+.form-note {
+  font-size: 13px;
+  color: #b00020;
+  margin-top: 6px;
+  padding-left: 36px;
+}
+
+/* Center the "Don't have an account?" link */
+.login-section .switch,
+.signup-section .switch {
+  text-align: center;
+  margin-top: 14px;
+  padding-left: 36px;
+}
+.login-section .switch a,
+.signup-section .switch a {
+  color: var(--accent-2);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* Ensure the card is not hidden behind header on very small screens */
+@media (max-width: 920px) {
+  .content { padding-top: calc(var(--header-height) + 12px); padding-bottom: calc(var(--footer-height) + 12px); }
+  main { min-height: calc(100vh - var(--header-height) - var(--footer-height)); padding: 12px; }
+  .login-section, .signup-section { max-width: 520px; width: 100%; padding: 22px; }
+  header, footer { padding: 12px 18px; }
+}
+
+/* Very small screens */
+@media (max-width: 420px) {
+  .login-section, .signup-section {
+    padding: 16px;
+    border-radius: 10px;
+  }
+  .login-section h1, .signup-section h1 { font-size: 20px; }
+  input[type="text"], input[type="password"] { padding: 10px; font-size: 14px; }
+  button[type="submit"] { padding: 10px; font-size: 15px; border-radius: 8px; }
+}
+
+/* Accessibility */
+a:focus, button:focus, input:focus { outline-offset: 3px; }
+
+/* Utility: center a single card vertically if needed */
+.centered {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  padding: 18px;
 }

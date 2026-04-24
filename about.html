@@ -4,208 +4,229 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ALANA Chat · About</title>
+
+  <!-- Global stylesheet (unchanged site-wide) -->
   <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Page-specific stylesheet (scoped to .about-page) -->
+  <link rel="stylesheet" href="assets/css/about.css" />
 </head>
 
-<body>
-  <!-- Header (kept as dynamic include) -->
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <div class="logo">
-        <img src="assets/img/logo.png" alt="ALANA Chat logo" />
-      </div>
+<body class="about-page">
+  <!-- Header include (keeps your header.php approach) -->
+  <div id="header"></div>
+  <script>
+    fetch('header.php')
+      .then(response => response.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+  </script>
 
-      <nav class="main-nav" role="navigation" aria-label="Main">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a class="active" href="about.html">About</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="resources.html">Resources</a></li>
-        </ul>
-      </nav>
-
-      <div class="header-actions">
-        <a class="btn-login" href="login.html">Login</a>
-      </div>
-    </div>
-  </header>
-
-  <!-- Decorative background layer (keeps existing background image) -->
-  <div class="background" aria-hidden="true"></div>
-
-  <!-- Main content -->
-  <main id="main" class="site-main" role="main">
-    <!-- Hero / Intro -->
-    <section class="about-hero">
-      <div class="hero-inner">
+  <main id="main" role="main">
+    <!-- Hero: text card and separate illustration card -->
+    <section class="about-hero container">
+      <div class="about-text-card">
         <h1>About ALANA Chat</h1>
-        <p class="lead">
+
+        <p>
           RIT contains numerous groups that ensure ALANA (African, Latin, Asian,
           Native American) students have access to opportunities and are in a
           position to flourish. Students often find the abundance of resources
           overwhelming and hard to track down. ALANA Chat is a student-created
           tool for sharing information and navigating resources.
         </p>
-        <p class="lead small">
+
+        <p>
           Created in 2022 as a capstone project, ALANA Chat has been passed down
           through several groups of Humanities, Computing, and Design students
           passionate about helping ALANA students thrive on RIT’s diverse campus.
         </p>
       </div>
+
+      <div class="about-illustration" aria-hidden="true">
+        <img src="assets/img/background.jpg" alt="" />
+      </div>
     </section>
 
     <!-- Meet the Team -->
-    <section class="team-section" aria-labelledby="meet-team">
-      <div class="section-inner">
-        <h2 id="meet-team">Meet the Team</h2>
+    <section class="team-section container" aria-labelledby="meet-team">
+      <h2 id="meet-team">Meet the Team</h2>
 
-        <!-- Creators -->
-        <div class="team-group">
-          <h3 class="group-title">Creators</h3>
-          <div class="cards-grid">
-            <article class="profile-card">
-              <img src="assets/img/zoe.png" alt="Zoe Zapata" />
-              <h4>Zoe Zapata</h4>
-              <p class="role">ALANA Chat Founder</p>
-            </article>
-
-            <article class="profile-card">
-              <img src="assets/img/carter.png" alt="Carter Sargent" />
-              <h4>Carter Sargent</h4>
-              <p class="role">ALANA Chat Back-end Developer</p>
-            </article>
-
-            <article class="profile-card">
-              <img src="assets/img/minerva.png" alt="Mike Minerva" />
-              <h4>Mike Minerva</h4>
-              <p class="role">New Media Design Professor — UI/UX</p>
-            </article>
-          </div>
+      <!-- Tabs: Creators, Advisors, Current Capstone, Past Capstone -->
+      <div class="team-tabs-wrap">
+        <div class="capstone-tabs" role="tablist" aria-label="Team tabs">
+          <button class="tab-btn active" data-target="tab-creators" role="tab" aria-selected="true">Creators</button>
+          <button class="tab-btn" data-target="tab-advisors" role="tab" aria-selected="false">Advisors</button>
+          <button class="tab-btn" data-target="tab-current" role="tab" aria-selected="false">Current Capstone</button>
+          <button class="tab-btn" data-target="tab-past" role="tab" aria-selected="false">Past Capstone</button>
         </div>
 
-        <!-- Advisors -->
-        <div class="team-group">
-          <h3 class="group-title">Advisors</h3>
-          <div class="cards-grid">
-            <article class="profile-card">
-              <img src="assets/img/thiuri.png" alt="Philippa Thiuri" />
-              <h4>Philippa Thiuri</h4>
-              <p class="role">Division of Diversity and Inclusion — Outreach</p>
-            </article>
+        <div class="tab-panels">
+          <!-- Creators -->
+          <div id="tab-creators" class="tab-panel active" role="tabpanel">
+            <div class="team-group">
+              <div class="cards-grid">
+                <article class="profile-card">
+                  <img src="assets/img/zoe.png" alt="Zoe Zapata" />
+                  <h4>Zoe Zapata</h4>
+                  <p class="role">ALANA Chat Founder</p>
+                </article>
 
-            <article class="profile-card">
-              <img src="assets/img/snyder.png" alt="Nick Snyder" />
-              <h4>Nick Snyder</h4>
-              <p class="role">School of Information Professor</p>
-            </article>
-
-            <article class="profile-card">
-              <img src="assets/img/frank.png" alt="Michael Frank" />
-              <h4>Michael Frank</h4>
-              <p class="role">Capstone Professor</p>
-            </article>
-
-            <article class="profile-card">
-              <img src="assets/img/jess.png" alt="Jessica Lieberman" />
-              <h4>Jessica Lieberman</h4>
-              <p class="role">Capstone Professor</p>
-            </article>
+                <article class="profile-card">
+                  <img src="assets/img/carter.png" alt="Carter Sargent" />
+                  <h4>Carter Sargent</h4>
+                  <p class="role">ALANA Chat Back-end Developer</p>
+                </article>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- Current Capstone -->
-        <div class="team-group">
-          <h3 class="group-title">Current Capstone</h3>
-          <div class="cards-grid">
-            <article class="profile-card">
-              <img src="assets/img/grace.png" alt="Grace Ledford" />
-              <h4>Grace Ledford</h4>
-              <p class="role">Capstone 25' — Marketing</p>
-            </article>
+          <!-- Advisors -->
+          <div id="tab-advisors" class="tab-panel" role="tabpanel" hidden>
+            <div class="team-group">
+              <div class="cards-grid">
+                <article class="profile-card">
+                  <img src="assets/img/minerva.png" alt="Mike Minerva" />
+                  <h4>Mike Minerva</h4>
+                  <p class="role">New Media Design Professor — UI/UX</p>
+                </article>
 
-            <article class="profile-card">
-              <img src="assets/img/rin.png" alt="Trinity Wray" />
-              <h4>Trinity Wray</h4>
-              <p class="role">Capstone 25' — Project Manager</p>
-            </article>
+                <article class="profile-card">
+                  <img src="assets/img/thiuri.png" alt="Philippa Thiuri" />
+                  <h4>Philippa Thiuri</h4>
+                  <p class="role">Division of Diversity and Inclusion — Outreach</p>
+                </article>
 
-            <article class="profile-card">
-              <img src="assets/img/ali.png" alt="Alison Lodge" />
-              <h4>Alison Lodge</h4>
-              <p class="role">Capstone 25' — Researcher</p>
-            </article>
+                <article class="profile-card">
+                  <img src="assets/img/snyder.png" alt="Nick Snyder" />
+                  <h4>Nick Snyder</h4>
+                  <p class="role">School of Information Professor</p>
+                </article>
 
-            <article class="profile-card">
-              <img src="assets/img/filler.png" alt="Enzo Espiritu" />
-              <h4>Enzo Espiritu</h4>
-              <p class="role">Capstone 25' — Back-end/Front-end Developer</p>
-            </article>
+                <article class="profile-card">
+                  <img src="assets/img/frank.png" alt="Michael Frank" />
+                  <h4>Michael Frank</h4>
+                  <p class="role">Capstone Professor</p>
+                </article>
 
-            <article class="profile-card">
-              <img src="assets/img/sushant.png" alt="Sushant Pulipati" />
-              <h4>Sushant Pulipati</h4>
-              <p class="role">Capstone 25' — Back-end/Front-end Developer</p>
-            </article>
+                <article class="profile-card">
+                  <img src="assets/img/jess.png" alt="Jessica Lieberman" />
+                  <h4>Jessica Lieberman</h4>
+                  <p class="role">Capstone Professor</p>
+                </article>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <!-- Past Capstone -->
-        <div class="team-group">
-          <h3 class="group-title">Past Capstone</h3>
-          <div class="cards-grid">
-            <article class="profile-card">
-              <img src="assets/img/chiny.png" alt="Chiny Okonkwo" />
-              <h4>Chiny Okonkwo</h4>
-              <p class="role">Capstone 24' — UI/UX</p>
-            </article>
+          <!-- Current Capstone -->
+          <div id="tab-current" class="tab-panel" role="tabpanel" hidden>
+            <div class="team-group">
+              <div class="cards-grid">
+                <article class="profile-card">
+                  <img src="assets/img/grace.png" alt="Grace Ledford" />
+                  <h4>Grace Ledford</h4>
+                  <p class="role">Capstone 25' — Marketing</p>
+                </article>
 
-            <article class="profile-card">
-              <img src="assets/img/larry.png" alt="Larry Meng" />
-              <h4>Larry Meng</h4>
-              <p class="role">Capstone 24' — Back-end Developer</p>
-            </article>
+                <article class="profile-card">
+                  <img src="assets/img/rin.png" alt="Trinity Wray" />
+                  <h4>Trinity Wray</h4>
+                  <p class="role">Capstone 25' — Project Manager</p>
+                </article>
 
-            <article class="profile-card">
-              <img src="assets/img/anna.png" alt="Anna Liang" />
-              <h4>Anna Liang</h4>
-              <p class="role">Capstone 24' — Marketing</p>
-            </article>
+                <article class="profile-card">
+                  <img src="assets/img/ali.png" alt="Alison Lodge" />
+                  <h4>Alison Lodge</h4>
+                  <p class="role">Capstone 25' — Researcher</p>
+                </article>
+
+                <article class="profile-card">
+                  <img src="assets/img/filler.png" alt="Enzo Espiritu" />
+                  <h4>Enzo Espiritu</h4>
+                  <p class="role">Capstone 25' — Back-end/Front-end Developer</p>
+                </article>
+
+                <article class="profile-card">
+                  <img src="assets/img/sushant.png" alt="Sushant Pulipati" />
+                  <h4>Sushant Pulipati</h4>
+                  <p class="role">Capstone 25' — Back-end/Front-end Developer</p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <!-- Past Capstone -->
+          <div id="tab-past" class="tab-panel" role="tabpanel" hidden>
+            <div class="team-group">
+              <div class="cards-grid">
+                <article class="profile-card">
+                  <img src="assets/img/chiny.png" alt="Chiny Okonkwo" />
+                  <h4>Chiny Okonkwo</h4>
+                  <p class="role">Capstone 24' — UI/UX</p>
+                </article>
+
+                <article class="profile-card">
+                  <img src="assets/img/larry.png" alt="Larry Meng" />
+                  <h4>Larry Meng</h4>
+                  <p class="role">Capstone 24' — Back-end Developer</p>
+                </article>
+
+                <article class="profile-card">
+                  <img src="assets/img/anna.png" alt="Anna Liang" />
+                  <h4>Anna Liang</h4>
+                  <p class="role">Capstone 24' — Marketing</p>
+                </article>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer (kept as dynamic include) -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-inner">
-      <nav class="footer-nav" aria-label="Footer">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="resources.html">Resources</a></li>
-        </ul>
-      </nav>
-      <p class="copyright">© ALANA Chat</p>
-    </div>
-  </footer>
-
-  <!-- Dynamic includes (kept as original approach) -->
-  <script>
-    fetch('header.php')
-      .then(r => r.text())
-      .then(html => {
-        /* If you want to keep server-side header include, you can remove the static header above.
-           This script is left intentionally to match your original approach. */
-      });
-  </script>
-
+  <!-- Footer include (restores original footer) -->
+  <div id="footer"></div>
   <script>
     fetch('footer.html')
-      .then(r => r.text())
-      .then(html => {
-        /* same note as header */
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+
+  <!-- Tabs JS (scoped to this page) -->
+  <script>
+    (function () {
+      const tabBtns = document.querySelectorAll('.capstone-tabs .tab-btn');
+      const panels = document.querySelectorAll('.tab-panel');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // update buttons
+          tabBtns.forEach(b => {
+            const isActive = b === btn;
+            b.classList.toggle('active', isActive);
+            b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          });
+
+          // show/hide panels
+          const target = btn.getAttribute('data-target');
+          panels.forEach(p => {
+            if (p.id === target) {
+              p.classList.add('active');
+              p.removeAttribute('hidden');
+            } else {
+              p.classList.remove('active');
+              p.setAttribute('hidden', '');
+            }
+          });
+
+          // move focus to first focusable element in panel for accessibility
+          const activePanel = document.getElementById(target);
+          if (activePanel) {
+            const focusable = activePanel.querySelector('button, a, input, [tabindex]:not([tabindex="-1"])');
+            if (focusable) focusable.focus();
+          }
+        });
       });
+    })();
   </script>
 </body>
 </html>

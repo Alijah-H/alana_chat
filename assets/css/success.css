@@ -1,0 +1,102 @@
+/* Page-scoped success styles. Load after global stylesheet. */
+
+.success-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+}
+
+/* Ensure main content sits below fixed header (adjust if header height differs) */
+.success-main {
+  margin-top: 88px; /* adjust if your header height differs */
+  margin-bottom: 48px; /* leave room for footer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  flex: 1 0 auto;
+}
+
+/* Card */
+.success-card {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  background: rgba(255,255,255,0.98);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  max-width: 920px;
+  width: 100%;
+}
+
+/* Visual */
+.success-visual {
+  flex: 0 0 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Content */
+.success-content {
+  flex: 1 1 auto;
+}
+.success-content h1 {
+  color: #ee2a45;
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+.success-message {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+}
+.next-steps {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 14px;
+}
+.link-primary {
+  color: #e63946;
+  font-weight: 700;
+  text-decoration: none;
+}
+.link-primary:hover { text-decoration: underline; }
+
+/* Actions */
+.success-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 6px;
+}
+.btn-primary {
+  background: #e63946;
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.btn-primary:hover { background: #c92d36; }
+.btn-secondary {
+  background: transparent;
+  color: #333;
+  padding: 10px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.btn-secondary:hover { background: rgba(0,0,0,0.03); }
+
+/* Responsive */
+@media (max-width: 760px) {
+  .success-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 18px;
+  }
+  .success-visual { margin-bottom: 8px; }
+  .success-main { margin-top: 72px; }
+}

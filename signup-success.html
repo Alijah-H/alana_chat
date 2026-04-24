@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ALANA Chat · Registration Successful</title>
+
+  <!-- Global stylesheet (keeps site-wide look) -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Page-specific styles (scoped) -->
+  <link rel="stylesheet" href="assets/css/success.css" />
+</head>
+<body class="success-page">
+
+  <!-- Header include (keeps your header.php approach) -->
+  <div id="header"></div>
+  <script>
+    fetch('header.php')
+      .then(response => response.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+  </script>
+
+  <main class="success-main" role="main" aria-labelledby="success-title">
+    <section class="success-card" role="region" aria-labelledby="success-title">
+      <div class="success-visual" aria-hidden="true">
+        <!-- simple inline SVG checkmark to avoid external assets -->
+        <svg width="96" height="96" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="11" stroke="#ee2a45" stroke-width="1.5" fill="white"/>
+          <path d="M7 12.5l2.5 2.5L17 8" stroke="#ee2a45" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+
+      <div class="success-content">
+        <h1 id="success-title">Registration successful!</h1>
+
+        <p class="success-message">
+          Thank you, <strong id="display-name">new user</strong>. Your account has been created.
+        </p>
+
+        <p class="next-steps">
+          You can now <a class="link-primary" href="login.html">log in</a> or return to the <a class="link-primary" href="index.html">home page</a>.
+        </p>
+
+        <div class="success-actions">
+          <a class="btn-primary" href="login.html" role="button">Go to Login</a>
+          <a class="btn-secondary" href="index.html" role="button">Home</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer include (keeps your footer.html approach) -->
+  <div id="footer"></div>
+  <script>
+    fetch('footer.html')
+      .then(response => response.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+
+  <!-- Small script to read the name query param and insert it safely -->
+  <script>
+    (function () {
+      function getQueryParam(name) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+      }
+      const rawName = getQueryParam('name');
+      if (rawName) {
+        // decode and sanitize basic HTML characters
+        const decoded = decodeURIComponent(rawName);
+        const safe = decoded.replace(/[&<>"'\/]/g, function (s) {
+          return ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;',
+            '/': '&#x2F;'
+          })[s];
+        });
+        document.getElementById('display-name').textContent = safe;
+      }
+    })();
+  </script>
+</body>
+</html>
